@@ -14,21 +14,42 @@ const QuestionRow: React.FC<Props> = ({ q, value, onChange }) => {
     case "demographic":
       if (q.id === "location") {
         const opts = ["US/Canada", "Asia", "Central/South America", "Other"] as const;
+        const predefinedOpts = opts.slice(0, -1); // All options except "Other"
+        const isOtherSelected = typeof value === "string" && !predefinedOpts.includes(value as typeof predefinedOpts[number]);
+        const otherValue = isOtherSelected ? value : "";
+        
         return (
           <fieldset>
             <legend>{q.text}</legend>
             {opts.map((opt) => (
-              <label key={opt} style={{ display: "block", marginBottom: 4 }}>
+              <label key={opt}>
                 <input
                   type="radio"
                   name={q.id}
                   value={opt}
-                  checked={value === opt}
-                  onChange={() => onChange(opt)}
+                  checked={opt === "Other" ? isOtherSelected : value === opt}
+                  onChange={() => {
+                    if (opt === "Other") {
+                      onChange(""); // Start with empty string for custom input
+                    } else {
+                      onChange(opt);
+                    }
+                  }}
                 />
                 {opt}
               </label>
             ))}
+            {isOtherSelected && (
+              <div className="other-input-container">
+                <input
+                  type="text"
+                  placeholder="Please specify..."
+                  value={otherValue}
+                  onChange={(e) => onChange(e.target.value)}
+                  className="other-text-input"
+                />
+              </div>
+            )}
           </fieldset>
         );
       }
@@ -51,10 +72,10 @@ const QuestionRow: React.FC<Props> = ({ q, value, onChange }) => {
             : onChange([...current, opt]);
 
         return (
-          <fieldset>
+          <fieldset data-question="tech">
             <legend>{q.text}</legend>
             {opts.map((opt) => (
-              <label key={opt} style={{ display: "block", marginBottom: 4 }}>
+              <label key={opt}>
                 <input
                   type="checkbox"
                   name={`${q.id}_${opt}`}

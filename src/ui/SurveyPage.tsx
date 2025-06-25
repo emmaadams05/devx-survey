@@ -173,6 +173,13 @@ const SurveyPage: React.FC = () => {
           Step {pg} of {totalPages - 1}: {getPageTitle()}
         </h2>
 
+        {/* Add subtitle for Demographics page */}
+        {pg === DEMOGRAPHICS_PAGE && (
+          <p className="section-subtitle">
+            Help us slice results by region &amp; role.
+          </p>
+        )}
+
         <div className="error-slot">
           {error && (
             <div className="error-text">
@@ -188,7 +195,7 @@ const SurveyPage: React.FC = () => {
 
         {/* Demographics Page */}
         {pg === DEMOGRAPHICS_PAGE && (
-          <div>
+          <div className="demographics-page">
             {demographicQuestions.map((q) => (
               <QuestionRow
                 key={q.id}
