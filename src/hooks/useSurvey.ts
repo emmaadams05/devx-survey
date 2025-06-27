@@ -35,7 +35,7 @@ export function useSurvey(allQuestions: Question[]): UseSurveyResult {
   // Persist on every change
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
       // Clear any previous errors if save succeeds
       if (error) setError(undefined);
     } catch (err) {

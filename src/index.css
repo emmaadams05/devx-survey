@@ -45,6 +45,12 @@ legend {
   margin: 0 0 0.5rem;
   font-weight: 500;
   font-size: 1.1rem;
+  animation: safari-legend-fix 0.01s ease-in-out;
+}
+
+@keyframes safari-legend-fix {
+  0% { opacity: 0.999; }
+  100% { opacity: 1; }
 }
 
 /* Progress Bar */
@@ -131,7 +137,7 @@ legend {
   font-size: 1rem;
   font-weight: 500;
   color: #6b7280;
-  margin: 16px 0 1.5rem 0;
+  margin: 8px 0 24px 0;
   text-align: center;
 }
 
@@ -147,11 +153,6 @@ legend {
 
 .demographics-page label {
   margin-bottom: 12px !important;
-}
-
-.demographics-page legend {
-  font-weight: 600;
-  line-height: 1.4;
 }
 
 .demographics-page fieldset label {
@@ -566,8 +567,8 @@ textarea::placeholder {
   .grid-columns::before,
   .grid-body::before {
     display: none;
-  }
-  
+}
+
   .column-header {
     margin-bottom: 1rem;
     border: 1px solid #eee;
@@ -588,7 +589,7 @@ textarea::placeholder {
     font-weight: 600;
     margin-bottom: 1rem;
     text-align: center;
-    font-size: 0.9rem;
+  font-size: 0.9rem;
   }
   
   .rating-column {
@@ -740,5 +741,73 @@ textarea::placeholder {
 
 .other-text-input::placeholder {
   color: #9ca3af;
+}
+
+.center-button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 24px;
+}
+
+.demo-card {
+  min-width: 640px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+  overflow-x: auto;
+}
+
+/* Intro card retains full padding top */
+.intro-card {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.demo-card > .progress {
+  border-radius: 12px 12px 0 0; /* match card radius */
+}
+
+.demographics-page legend {
+  font-weight: 600;
+  line-height: 1.4;
+  font-size: 1.1rem;
+  animation: safari-legend-fix 0.01s ease-in-out;
+}
+
+section {
+  padding: 1.5rem 1.5rem 2rem;
+}
+
+.progress-preview {
+  text-align: center;
+  font-size: 0.85rem;
+  background: #f1f5f9;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  margin: 8px auto 24px;
+  display: inline-block;
+  color: #64748b;
+}
+
+.hero-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.hero-list li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 16px;
+}
+
+.hero-list li:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #64748b;
 }
 

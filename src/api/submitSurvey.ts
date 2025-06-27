@@ -37,12 +37,12 @@ export type SurveyAnswers = {
 };
 
 const submitSurvey = async (payload: SurveyAnswers) => {
-  const res = await fetch("/api/devex-survey", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
-  if (!res.ok) throw new Error("Submit failed");
+    const res = await fetch("/api/devex-survey", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error("Submit failed");
 };
 
-export default submitSurvey;
+  export default submitSurvey;

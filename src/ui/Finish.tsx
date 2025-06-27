@@ -60,7 +60,7 @@ const Finish: React.FC = () => {
     let isMounted = true;
 
     if (isCompleteSurvey(answers)) {
-      submitSurvey(answers)
+    submitSurvey(answers)
         .then(() => {
           if (isMounted) setStatus("ok");
         })

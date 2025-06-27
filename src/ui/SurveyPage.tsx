@@ -144,18 +144,24 @@ const SurveyPage: React.FC = () => {
     // --- Intro screen ---
     return (
       <div className="container">
-        <h1>Developer Experience Survey</h1>
-        <p>
-          Thanks for helping us improve our engineering environment. Your
-          feedback highlights friction, guides improvements, and tracks progress
-          over time.
-        </p>
-        <p>
-          The survey contains questions about your development experience
-          and should take less than 5 minutes to complete. Responses
-          are <strong>anonymous</strong> and aggregated.
-        </p>
-        <button className="btn" onClick={() => nav("/survey/1")}>Begin</button>
+        <div className="demo-card intro-card">
+          <h1 style={{ textAlign: 'center', marginTop: 0 }}>
+            <span role="img" aria-hidden="true">🛠️</span> Developer Experience Survey
+          </h1>
+          <div className="progress-preview">≈ 5 min · 5 steps</div>
+          <p>
+            Thanks for helping us improve our engineering environment. Your feedback:
+          </p>
+          <ul className="hero-list">
+            <li>Highlights friction</li>
+            <li>Guides improvements</li>
+            <li>Tracks progress over time</li>
+          </ul>
+          <p>
+            Responses are <strong>anonymous</strong> and aggregated.
+          </p>
+          <button className="btn center-button" onClick={() => nav("/survey/1")}>Start Survey</button>
+        </div>
       </div>
     );
   }
@@ -163,154 +169,158 @@ const SurveyPage: React.FC = () => {
   // --- Question pages ---
   return (
     <div className="container">
-        <div className="progress">
-          <div
-            className="progress__bar"
-            style={{ width: `${(pg / (totalPages - 1)) * 100}%` }}
-          />
-        </div>  
-        <h2 className="section-title">
-          Step {pg} of {totalPages - 1}: {getPageTitle()}
-        </h2>
-
-        {/* Add subtitle for Demographics page */}
-        {pg === DEMOGRAPHICS_PAGE && (
-          <p className="section-subtitle">
-            Help us slice results by region &amp; role.
-          </p>
-        )}
-
-        <div className="error-slot">
-          {error && (
-            <div className="error-text">
-              {error}
-            </div>
-          )}
-          {!allAnswered && (
-            <div className="error-text">
-              Please answer all questions before continuing.
-            </div>
-          )}
-        </div>
-
-        {/* Demographics Page */}
-        {pg === DEMOGRAPHICS_PAGE && (
-          <div className="demographics-page">
-            {demographicQuestions.map((q) => (
-              <QuestionRow
-                key={q.id}
-                q={q}
-                value={answers[q.id as keyof typeof answers]}
-                onChange={(v) => handleQuestionChange(q.id, v)}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Delivery & Flow Page */}
-        {pg === DELIVERY_FLOW_PAGE && (
-          <div>
-            <p className="grid-title">
-              Please rate the following statements on <strong>Satisfaction</strong> and <strong>Importance</strong>.
-            </p>
-            <QuestionGrid
-              pairs={deliveryFlowPairs}
-              answers={answers}
-              onChange={(id, value) => save(id, value)}
+        <div className="demo-card">
+          <div className="progress">
+            <div
+              className="progress__bar"
+              style={{ width: `${(pg / (totalPages - 1)) * 100}%` }}
             />
           </div>
-        )}
-
-        {/* Quality & Safety Page */}
-        {pg === QUALITY_SAFETY_PAGE && (
-          <div>
-            <p className="grid-title">
-              Please rate the following statements on <strong>Satisfaction</strong> and <strong>Importance</strong>.
-            </p>
-            <QuestionGrid
-              pairs={qualitySafetyPairs}
-              answers={answers}
-              onChange={(id, value) => save(id, value)}
-            />
-          </div>
-        )}
-
-        {/* Team Dynamics & Well-being Page */}
-        {pg === TEAM_DYNAMICS_PAGE && (
-          <div>
-            <p className="grid-title">
-              Please rate the following statements on <strong>Satisfaction</strong> and <strong>Importance</strong>.
-            </p>
-            <QuestionGrid
-              pairs={teamDynamicsPairs}
-              answers={answers}
-              onChange={(id, value) => save(id, value)}
-            />
-          </div>
-        )}
-
-        {/* Text Questions Page */}
-        {pg === TEXT_QUESTIONS_PAGE && (
-          <div className="feedback-card">
-            {textQuestions.map((q) => (
-              <FeedbackQuestion
-                key={q.id}
-                question={q}
-                value={answers[q.id as keyof typeof answers] as string}
-                onChange={(value) => handleQuestionChange(q.id, value)}
-              />
-            ))}
-
-            <div className="sticky-btns">
-              {pg > 1 && (
-                <button
-                  className="btn btn--secondary"
-                  onClick={() => nav(`/survey/${pg - 1}`)}
-                >
-                  Back
-                </button>
+          <section>
+            <h2 className="section-title">
+              Step {pg} of {totalPages - 1}: {getPageTitle()}
+            </h2>
+    
+            {/* Add subtitle for Demographics page */}
+            {pg === DEMOGRAPHICS_PAGE && (
+              <p className="section-subtitle">
+                Help us slice results by region &amp; role.
+              </p>
+            )}
+    
+            <div className="error-slot">
+              {error && (
+                <div className="error-text">
+                  {error}
+                </div>
               )}
-              <button
-                className="btn"
-                onClick={() => nav("/finish")}
-                disabled={!allAnswered}
-              >
-                Finish
-              </button>
+              {!allAnswered && (
+                <div className="error-text">
+                  Please answer all questions before continuing.
+                </div>
+              )}
             </div>
-          </div>
-        )}
-
-        {/* Regular button group for non-feedback pages */}
-        {pg !== TEXT_QUESTIONS_PAGE && (
-          <div className="btn-group">
+    
+            {/* Demographics Page */}
+            {pg === DEMOGRAPHICS_PAGE && (
+              <div className="demographics-page">
+                {demographicQuestions.map((q) => (
+            <QuestionRow
+              key={q.id}
+              q={q}
+                    value={answers[q.id as keyof typeof answers]}
+                    onChange={(v) => handleQuestionChange(q.id, v)}
+                  />
+                ))}
+              </div>
+            )}
+    
+            {/* Delivery & Flow Page */}
+            {pg === DELIVERY_FLOW_PAGE && (
+              <div>
+                <p className="grid-title">
+                  Please rate the following statements on <strong>Satisfaction</strong> and <strong>Importance</strong>.
+                </p>
+                <QuestionGrid
+                  pairs={deliveryFlowPairs}
+                  answers={answers}
+                  onChange={(id, value) => save(id, value)}
+                />
+              </div>
+            )}
+    
+            {/* Quality & Safety Page */}
+            {pg === QUALITY_SAFETY_PAGE && (
+              <div>
+                <p className="grid-title">
+                  Please rate the following statements on <strong>Satisfaction</strong> and <strong>Importance</strong>.
+                </p>
+                <QuestionGrid
+                  pairs={qualitySafetyPairs}
+                  answers={answers}
+                  onChange={(id, value) => save(id, value)}
+                />
+              </div>
+            )}
+    
+            {/* Team Dynamics & Well-being Page */}
+            {pg === TEAM_DYNAMICS_PAGE && (
+              <div>
+                <p className="grid-title">
+                  Please rate the following statements on <strong>Satisfaction</strong> and <strong>Importance</strong>.
+                </p>
+                <QuestionGrid
+                  pairs={teamDynamicsPairs}
+                  answers={answers}
+                  onChange={(id, value) => save(id, value)}
+                />
+              </div>
+            )}
+    
+            {/* Text Questions Page */}
+            {pg === TEXT_QUESTIONS_PAGE && (
+              <div className="feedback-card">
+                {textQuestions.map((q) => (
+                  <FeedbackQuestion
+                    key={q.id}
+                    question={q}
+                    value={answers[q.id as keyof typeof answers] as string}
+                    onChange={(value) => handleQuestionChange(q.id, value)}
+            />
+          ))}
+    
+                <div className="sticky-btns">
             {pg > 1 && (
-              <button
-                className="btn btn--secondary"
-                onClick={() => nav(`/survey/${pg - 1}`)}
-              >
-                Back
-              </button>
+                    <button
+                      className="btn btn--secondary"
+                      onClick={() => nav(`/survey/${pg - 1}`)}
+                    >
+                      Back
+                    </button>
+                  )}
+                  <button
+                    className="btn"
+                    onClick={() => nav("/finish")}
+                    disabled={!allAnswered}
+                  >
+                    Finish
+                  </button>
+                </div>
+              </div>
+            )}
+    
+            {/* Regular button group for non-feedback pages */}
+            {pg !== TEXT_QUESTIONS_PAGE && (
+              <div className="btn-group">
+                {pg > 1 && (
+                  <button
+                    className="btn btn--secondary"
+                    onClick={() => nav(`/survey/${pg - 1}`)}
+                  >
+                    Back
+                  </button>
             )}
             {pg < totalPages - 1 ? (
-              <button
-                className="btn"
-                onClick={() => nav(`/survey/${pg + 1}`)}
-                disabled={!allAnswered}
-              >
-                Next
-              </button>
+                  <button
+                    className="btn"
+                    onClick={() => nav(`/survey/${pg + 1}`)}
+                    disabled={!allAnswered}
+                  >
+                    Next
+                  </button>
             ) : (
-              <button
-                className="btn"
-                onClick={() => nav("/finish")}
-                disabled={!allAnswered}
-              >
-                Finish
-              </button>
+                  <button
+                    className="btn"
+                    onClick={() => nav("/finish")}
+                    disabled={!allAnswered}
+                  >
+                    Finish
+                  </button>
             )}
           </div>
-        )}
+            )}
+          </section>
+        </div>{/* demo-card end */}
     </div>
   );
 };

@@ -48,7 +48,7 @@ const QuestionRow: React.FC<Props> = ({ q, value, onChange }) => {
                   onChange={(e) => onChange(e.target.value)}
                   className="other-text-input"
                 />
-              </div>
+          </div>
             )}
           </fieldset>
         );
