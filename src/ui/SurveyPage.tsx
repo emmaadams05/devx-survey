@@ -64,6 +64,7 @@ const SurveyPage: React.FC = () => {
   const pg = parseInt(page, 10);
   const nav = useNavigate();
   const { answers, save, error } = useSurvey(questions);
+  const [hasAttemptedNext, setHasAttemptedNext] = useState(false);
 
   // Separate questions by type and page groupings
   const demographicQuestions = questions.filter(q => q.scale === "demographic");
@@ -132,6 +133,8 @@ const SurveyPage: React.FC = () => {
     if (requiredPage !== null && pg > requiredPage) {
       nav(`/survey/${requiredPage}`, { replace: true });
     }
+    // Reset attempt state when page changes
+    setHasAttemptedNext(false);
   }, [pg, answers, nav]);
 
   // Type-safe onChange handler for questions
@@ -194,7 +197,7 @@ const SurveyPage: React.FC = () => {
                   {error}
                 </div>
               )}
-              {!allAnswered && (
+              {!allAnswered && hasAttemptedNext && (
                 <div className="error-text">
                   Please answer all questions before continuing.
                 </div>
@@ -280,7 +283,13 @@ const SurveyPage: React.FC = () => {
                   )}
                   <button
                     className="btn"
-                    onClick={() => nav("/finish")}
+                    onClick={() => {
+                      if (allAnswered) {
+                        nav("/finish");
+                      } else {
+                        setHasAttemptedNext(true);
+                      }
+                    }}
                     disabled={!allAnswered}
                   >
                     Finish
@@ -303,7 +312,13 @@ const SurveyPage: React.FC = () => {
             {pg < totalPages - 1 ? (
                   <button
                     className="btn"
-                    onClick={() => nav(`/survey/${pg + 1}`)}
+                    onClick={() => {
+                      if (allAnswered) {
+                        nav(`/survey/${pg + 1}`);
+                      } else {
+                        setHasAttemptedNext(true);
+                      }
+                    }}
                     disabled={!allAnswered}
                   >
                     Next
@@ -311,7 +326,13 @@ const SurveyPage: React.FC = () => {
             ) : (
                   <button
                     className="btn"
-                    onClick={() => nav("/finish")}
+                    onClick={() => {
+                      if (allAnswered) {
+                        nav("/finish");
+                      } else {
+                        setHasAttemptedNext(true);
+                      }
+                    }}
                     disabled={!allAnswered}
                   >
                     Finish

@@ -2,6 +2,12 @@
 
 A ready-to-use Developer Experience (DevX) survey app for engineering organizations. It collects structured feedback on the developer workflow, tooling, and overall satisfaction so teams can surface friction points and measure improvements over time.
 
+## Live Demo
+
+🌐 **Try the survey**: [http://devxsurvey.surge.sh/survey/0](http://devxsurvey.surge.sh/survey/0)
+
+Experience the complete survey flow with all question types, responsive design, and user interface before setting up your own instance.
+
 ## Features
 
 ### Survey Structure
@@ -52,6 +58,9 @@ The survey covers 13 key areas of developer experience:
 - Sustainable development pace
 
 ## Getting Started
+
+### Try the Demo First
+Before setting up your own instance, check out the [live demo](http://devxsurvey.surge.sh/survey/0) to see the complete survey experience.
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v18 or newer recommended)
