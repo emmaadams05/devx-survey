@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SurveyResponse {
+  id        String   @id @default(cuid())
+  sessionId String?  @unique // For anonymous tracking and draft recovery
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Demographics
+  location String?
+  tech     String?
+
+  // Day-to-day Experience
+  dayToDayImpact       Int? // 1-5 Likert scale
+  dayToDaySatisfaction Int? // 1-5 Likert scale
+
+  // Delivery Speed
+  deliverySpeedImpact       Int?
+  deliverySpeedSatisfaction Int?
+
+  // Build/Test Flow
+  buildTestImpact       Int?
+  buildTestSatisfaction Int?
+
+  // Code Review
+  codeReviewImpact       Int?
+  codeReviewSatisfaction Int?
+
+  // Incident Response
+  incidentResponseImpact       Int?
+  incidentResponseSatisfaction Int?
+
+  // Codebase Clarity
+  codebaseClarityImpact       Int?
+  codebaseClaritySatisfaction Int?
+
+  // Dev Tools
+  devToolsImpact       Int?
+  devToolsSatisfaction Int?
+
+  // Dev Environments
+  devEnvironmentsImpact       Int?
+  devEnvironmentsSatisfaction Int?
+
+  // Deploy Autonomy
+  deployAutonomyImpact       Int?
+  deployAutonomySatisfaction Int?
+
+  // Security & Compliance
+  securityComplianceImpact       Int?
+  securityComplianceSatisfaction Int?
+
+  // Onboarding
+  onboardingImpact       Int?
+  onboardingSatisfaction Int?
+
+  // Meetings & Hand-offs
+  meetingsHandoffsImpact       Int?
+  meetingsHandoffsSatisfaction Int?
+
+  // Sustainable Pace
+  sustainablePaceImpact       Int?
+  sustainablePaceSatisfaction Int?
+
+  // Text feedback
+  biggestFriction String?
+  bestChange      String?
+
+  // Status tracking
+  isComplete Boolean @default(false)
+  isDraft    Boolean @default(true)
+
+  @@map("survey_responses")
+}
