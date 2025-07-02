@@ -1,159 +1,179 @@
-# devx-survey
+# Developer Experience Survey
 
-A ready-to-use Developer Experience (DevX) survey app for engineering organizations. It collects structured feedback on the developer workflow, tooling, and overall satisfaction so teams can surface friction points and measure improvements over time.
+A modern survey application built with Next.js 15, PostgreSQL, and Prisma for collecting developer experience feedback.
 
-## Live Demo
+## 🚀 Features
 
-🌐 **Try the survey**: [http://devxsurvey.surge.sh/survey/0](http://devxsurvey.surge.sh/survey/0)
+- **Next.js 15** with App Router for optimal performance
+- **PostgreSQL** database with Prisma ORM for type-safe operations
+- **Anonymous responses** with session tracking
+- **Draft saving** for incomplete surveys
+- **Real-time validation** with Zod schemas
+- **Responsive design** with custom CSS
+- **Type-safe** throughout with TypeScript
 
-Experience the complete survey flow with all question types, responsive design, and user interface before setting up your own instance.
+## 🛠️ Tech Stack
 
-## Features
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Backend**: Next.js API Routes, Server Actions
+- **Database**: PostgreSQL with Prisma ORM
+- **Validation**: Zod
+- **Styling**: Custom CSS (responsive)
+- **Development**: ESLint, Prettier, tsx
 
-### Survey Structure
-- **6-page survey flow**: Intro → Demographics → Delivery & Flow → Quality & Safety → Team Dynamics & Well-being → Additional Feedback
-- **Focused question groups**: Delivery & Flow (4 pairs), Quality & Safety (5 pairs), and Team Dynamics & Well-being (4 pairs) of satisfaction/importance question pairs
-- **Progress tracking**: Visual progress bar and step indicators
-- **Validation**: Requires all questions to be answered before proceeding
+## 🏗️ Project Structure
 
-### Question Types
-- **Demographics**: Location, technology areas
-- **Likert scale pairs**: Satisfaction vs. Importance ratings (1-5 scale)
-- **Open-ended feedback**: Qualitative questions with character counters
-
-### User Experience
-- **Modern pill-button interface**: Responsive buttons with proper touch targets
-- **Multi-line text support**: Long labels automatically wrap for readability
-- **Character limits**: 280-character limit with live counters on feedback questions (adjust `CHAR_LIMIT` in `src/ui/SurveyPage.tsx` if you need a different size)
-- **Responsive design**: Optimized for desktop, tablet, and mobile devices
-- **Accessibility**: Proper ARIA labels, fieldsets, and keyboard navigation
-
-### Data & Privacy
-- **Anonymous collection**: No personal identifiers required
-- **Local-first**: Answers saved in localStorage until submission
-- **Progress preservation**: Users can return to complete the survey later
-- **Secure submission**: Results submitted to configurable backend endpoint
-
-## Survey Content
-
-The survey covers 13 key areas of developer experience:
-
-**Delivery & Flow** (4 questions):
-- Delivery speed and predictability
-- Build/test cycle efficiency  
-- Development tool reliability
-- Deployment autonomy
-
-**Quality & Safety** (5 questions):
-- Code review processes
-- Incident response capabilities
-- Security/compliance workflows
-- Codebase clarity and architecture
-- Test environment stability
-
-**Team Dynamics & Well-being** (4 questions):
-- Day-to-day work satisfaction
-- Engineer onboarding effectiveness
-- Meeting and handoff efficiency
-- Sustainable development pace
-
-## Getting Started
-
-### Try the Demo First
-Before setting up your own instance, check out the [live demo](http://devxsurvey.surge.sh/survey/0) to see the complete survey experience.
-
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or newer recommended)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
-
-### Installation
-1. Clone this repository:
-   ```sh
-   git clone <your-fork-or-this-repo-url>
-   cd devx-survey
-   ```
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
-3. Start the development server:
-   ```sh
-   npm run dev
-   ```
-4. Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-### Development Commands
-```sh
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run lint     # Run ESLint
-npm run test     # Run tests (if configured)
-npm run preview  # Preview production build
+```
+├── app/                          # Next.js App Router
+│   ├── (survey)/                 # Survey route group
+│   │   ├── layout.tsx            # Survey layout
+│   │   ├── survey/
+│   │   │   ├── intro/page.tsx    # Survey intro
+│   │   │   └── [page]/page.tsx   # Dynamic survey pages
+│   │   └── finish/page.tsx       # Completion page
+│   ├── api/survey/route.ts       # Survey API endpoint
+│   ├── layout.tsx                # Root layout
+│   ├── globals.css               # Global styles
+│   └── page.tsx                  # Home page
+├── lib/                          # Business logic
+│   ├── database/prisma.ts        # Prisma client config
+│   ├── services/surveyService.ts # API service layer
+│   ├── validations/survey.ts     # Zod schemas
+│   ├── hooks/useSurvey.ts        # Survey state management
+│   ├── types/survey.ts           # TypeScript types
+│   ├── const/questions.ts        # Survey questions
+│   └── utils/                    # Utility functions
+├── components/                   # React components
+├── prisma/
+│   └── schema.prisma            # Database schema
+└── scripts/
+    └── seed.ts                  # Database seeding
 ```
 
-## Backend Integration
+## 🚦 Getting Started
 
-To collect survey results, you must provide an API endpoint that accepts survey submissions. By default, the app POSTs survey data to `/api/devex-survey`.
+### Prerequisites
 
-> **Changing the endpoint** – Edit the relative path inside [`src/api/submitSurvey.ts`](src/api/submitSurvey.ts) or replace it with your own absolute URL.
+- Node.js 18.17 or later
+- PostgreSQL 12 or later
+- npm or yarn
 
-### API Contract
-The endpoint should accept a JSON payload matching the structure in `src/api/submitSurvey.ts`:
+### Installation
 
-```typescript
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd devx-survey
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up PostgreSQL database**
+   
+   See [DATABASE_SETUP.md](./DATABASE_SETUP.md) for detailed instructions.
+
+   Quick setup:
+   ```bash
+   # Create database
+   createdb devx_survey
+   
+   # Create .env file
+   cp .env.example .env
+   # Update DATABASE_URL in .env
+   ```
+
+4. **Run database migrations**
+   ```bash
+   npm run db:push
+   npm run db:seed  # Optional: Add sample data
+   ```
+
+5. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+Open [http://localhost:3000](http://localhost:3000) to see the application.
+
+## 📊 Database Schema
+
+The survey uses a single `survey_responses` table with:
+
+- **Identity**: id, sessionId, timestamps
+- **Demographics**: location, tech  
+- **Likert responses**: All survey questions (1-5 scale)
+- **Text feedback**: biggestFriction, bestChange
+- **Status**: isDraft, isComplete
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run db:migrate` - Run database migrations
+- `npm run db:reset` - Reset database
+- `npm run db:studio` - Open Prisma Studio
+- `npm run db:seed` - Seed database with sample data
+
+## 🌐 API Endpoints
+
+### POST /api/survey
+Submit survey response or save draft
+
+**Body:**
+```json
 {
-  // Demographics
-  "location": "string",
-  "tech": ["string"],
-  
-  // Likert scale responses (1-5)
-  "delivery_speed_impact": 4,
-  "delivery_speed_satisfaction": 3,
-  "build_test_impact": 5,
-  "build_test_satisfaction": 2,
-  // ... (26 total Likert questions)
-  
-  // Open-ended feedback
-  "q_biggest_friction": "string",
-  "q_best_change": "string"
+  "location": "San Francisco, CA",
+  "tech": "Frontend Development", 
+  "dayToDayImpact": 4,
+  "dayToDaySatisfaction": 3,
+  // ... other survey fields
+  "sessionId": "optional-session-id",
+  "isDraft": false
 }
 ```
 
-### Response Requirements
-- Respond with a **2xx status code** on successful submission
-- Optionally return a confirmation message or survey ID
-- Handle validation errors with appropriate error responses
+### GET /api/survey?sessionId=xxx
+Retrieve draft by session ID
 
-You can implement this endpoint in any backend framework (Express.js, FastAPI, serverless functions, etc.).
+## 🛡️ Data Privacy
 
-## Customization
+- All responses are **anonymous**
+- Session IDs used only for draft recovery
+- No personal identifying information collected
+- Responses aggregated for insights
 
-### Questions & Content
-- **Questions**: Edit `src/const/questions.ts` to modify survey questions
-- **Themes**: Update question groupings in `src/utils/questionPairs.ts`
-- **Copy**: Adjust titles and descriptions in survey components
+## 🚀 Deployment
 
-### Styling & UI
-- **Design system**: Modify CSS variables in `src/index.css`
-- **Responsive breakpoints**: Adjust media queries for different screen sizes
-- **Color scheme**: Update accent colors and gradients
+1. **Environment variables**
+   ```bash
+   DATABASE_URL="your-production-db-url"
+   NEXTAUTH_SECRET="your-secret-key"
+   ```
 
-### Survey Flow
-- **Page structure**: Modify routing logic in `src/ui/SurveyPage.tsx`
-- **Validation**: Customize completion requirements in `src/utils/surveyProgress.ts`
-- **Storage**: Adjust localStorage behavior in `src/hooks/useSurvey.ts`
-- **Character limit**: Update `CHAR_LIMIT` constant in `src/ui/SurveyPage.tsx`
+2. **Deploy database**
+   ```bash
+   npm run db:deploy
+   ```
 
-## Technology Stack
+3. **Build and deploy**
+   ```bash
+   npm run build
+   npm run start
+   ```
 
-- **Frontend**: React 19 + TypeScript
-- **Build Tool**: Vite
-- **Styling**: CSS with CSS Grid and Flexbox
-- **Routing**: React Router v7
-- **State Management**: React hooks + localStorage
-- **Code Quality**: ESLint + TypeScript strict mode
-- **Testing**: Vitest (configured)
+## 🤝 Contributing
 
-## License
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes  
+4. Push to the branch
+5. Create a Pull Request
 
-MIT - Feel free to use this in your organization or contribute improvements back to the community.
+## 📝 License
+
+This project is licensed under the MIT License.
