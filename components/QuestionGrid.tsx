@@ -7,13 +7,12 @@ import type { SurveyAnswers, LikertAnswers } from '@/lib/types/survey';
 import type { QuestionPair } from '@/lib/utils/questionPairs';
 
 interface QuestionGridProps {
-  title: string;
   pairs: QuestionPair[];
   answers: Partial<SurveyAnswers>;
   onChange: (questionId: string, value: LikertScale) => void;
 }
 
-export function QuestionGrid({ title, pairs, answers, onChange }: QuestionGridProps): JSX.Element {
+export function QuestionGrid({ pairs, answers, onChange }: QuestionGridProps): JSX.Element {
   return (
     <div className="question-grid">
       <div className="grid-columns">

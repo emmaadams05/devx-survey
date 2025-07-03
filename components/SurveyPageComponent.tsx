@@ -169,7 +169,6 @@ export function SurveyPageComponent({ page }: SurveyPageComponentProps): JSX.Ele
       case PageType.QuestionGrid:
         return (
           <QuestionGrid
-            title={pageConfig.title}
             pairs={createPairsForThemes(questions, pageConfig.themes)}
             answers={answers}
             onChange={handleLikertAnswer}

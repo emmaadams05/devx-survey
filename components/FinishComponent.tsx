@@ -76,7 +76,7 @@ export function FinishComponent() {
     if (!isSubmitting && !isSubmitted && allRequiredAnswered) {
       handleSubmit()
     }
-  }, [answers, isSubmitting, isSubmitted, allRequiredAnswered])
+  }, [answers, isSubmitting, isSubmitted, allRequiredAnswered, handleSubmit])
 
   // ------------------ Render ------------------
 
