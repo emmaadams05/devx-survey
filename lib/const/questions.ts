@@ -88,7 +88,10 @@ export const questions: Question[] = [
       "Modern frontend (CSR)",
       "Modern frontend (SSR)",
       "Legacy frontend (JSP)",
-      "Experience/API layer"
+      "Experience/API layer",
+      "Android",
+      "iOS",
+      "Python Backend"
     ]
   },
 
