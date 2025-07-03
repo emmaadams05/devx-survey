@@ -91,7 +91,9 @@ export const questions: Question[] = [
       "Experience/API layer",
       "Android",
       "iOS",
-      "Python Backend"
+      "Python Backend",
+      "Cypress Automation",
+      "Selenium Automation"
     ]
   },
 
