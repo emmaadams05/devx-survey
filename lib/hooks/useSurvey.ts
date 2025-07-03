@@ -84,6 +84,8 @@ export function useSurvey(): UseSurveyResult {
       // Remove the session ID so a fresh one is created on the next survey attempt
       try {
         window.localStorage.removeItem('devxSurvey_sessionId')
+        // Also remove submission flag for dev/testing purposes
+        window.localStorage.removeItem('devxSurvey_hasSubmitted')
       } catch {
         /* ignore */
       }

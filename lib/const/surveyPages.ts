@@ -9,6 +9,7 @@ export enum PageType {
 interface PageConfig {
   page: string;
   title: string;
+  description?: string;
   type: PageType;
 }
 
@@ -33,12 +34,14 @@ export const surveyPages: SurveyPageConfig[] = [
     {
         page: 'demographics',
         title: "Demographics",
+        description: "Tell us a bit about your work context",
         type: PageType.Demographics,
         questionIds: ['location', 'tech']
     },
     {
         page: 'delivery-flow',
         title: "Delivery & Flow",
+        description: "Rate how important these factors are and how satisfied you are with them",
         type: PageType.QuestionGrid,
         themes: [
           THEMES.DAY_TO_DAY,
@@ -50,6 +53,7 @@ export const surveyPages: SurveyPageConfig[] = [
     {
         page: 'quality-safety',
         title: "Quality & Safety",
+        description: "Rate how important these factors are and how satisfied you are with them",
         type: PageType.QuestionGrid,
         themes: [
           THEMES.INCIDENT_RESPONSE,
@@ -61,6 +65,7 @@ export const surveyPages: SurveyPageConfig[] = [
     {
         page: 'team-dynamics',
         title: "Team Dynamics & Well-being",
+        description: "Rate how important these factors are and how satisfied you are with them",
         type: PageType.QuestionGrid,
         themes: [
           THEMES.DEPLOY_AUTONOMY,
@@ -73,6 +78,7 @@ export const surveyPages: SurveyPageConfig[] = [
     {
         page: 'additional-feedback',
         title: "Additional Feedback",
+        description: "Share any additional thoughts about your developer experience",
         type: PageType.Text,
         questionIds: ['biggestFriction', 'bestChange']
     }

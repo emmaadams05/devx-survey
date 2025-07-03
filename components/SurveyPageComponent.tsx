@@ -204,6 +204,9 @@ export function SurveyPageComponent({ page }: SurveyPageComponentProps): JSX.Ele
         <h2 className="section-title">
           Step {currentPageIndex + 1} of {surveyPages.length}: {pageConfig.title}
         </h2>
+        {pageConfig.description && (
+          <p className="page-description">{pageConfig.description}</p>
+        )}
 
         {renderPage()}
       </section>

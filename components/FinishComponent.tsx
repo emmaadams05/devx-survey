@@ -7,12 +7,24 @@ import { useSurvey } from '@/lib/hooks/useSurvey'
 import { SurveyService } from '@/lib/services/surveyService'
 import type { SurveyAnswers } from '@/lib/types/survey'
 
+const SUBMISSION_FLAG_KEY = 'devxSurvey_hasSubmitted'
+
 export function FinishComponent() {
   const router = useRouter()
-  const { answers, clearAnswers, getSurveyData } = useSurvey()
+  const { answers, getSurveyData } = useSurvey()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState<string>()
+
+  // Check localStorage for previous submission on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hasSubmitted = localStorage.getItem(SUBMISSION_FLAG_KEY)
+      if (hasSubmitted === 'true') {
+        setIsSubmitted(true)
+      }
+    }
+  }, [])
 
   // Check if all required questions are answered
   const allRequiredQuestions = questions.filter(q => q.scale !== 'text') // Text questions are optional
@@ -22,16 +34,6 @@ export function FinishComponent() {
     if (typeof val === "string") return val.trim() !== ""
     return true
   })
-
-  // Automatically submit on mount (after answers load)
-  useEffect(() => {
-    // Only attempt if answers have loaded and we haven't tried yet
-    if (Object.keys(answers).length === 0) return
-
-    if (!isSubmitting && !isSubmitted && allRequiredAnswered) {
-      handleSubmit()
-    }
-  }, [answers, isSubmitting, isSubmitted, allRequiredAnswered])
 
   const handleSubmit = async () => {
     if (!allRequiredAnswered || isSubmitting || isSubmitted) return
@@ -45,8 +47,10 @@ export function FinishComponent() {
 
       if (result.success) {
         setIsSubmitted(true)
-        // Clear the cookies after successful submission
-        clearAnswers()
+        // Mark as submitted in localStorage to prevent double submissions
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(SUBMISSION_FLAG_KEY, 'true')
+        }
       } else {
         setSubmitError(result.error || 'Failed to submit survey. Please try again.')
       }
@@ -58,14 +62,21 @@ export function FinishComponent() {
     }
   }
 
-  const handleStartOver = () => {
-    clearAnswers()
-    router.push('/intro')
-  }
-
   const handleGoBack = () => {
     router.push('/additional-feedback') // Go back to last page
   }
+
+  useEffect(() => {
+    // Only attempt if answers have loaded and we haven't tried yet
+    if (Object.keys(answers).length === 0) return
+
+    // Don't auto-submit if already submitted
+    if (isSubmitted) return
+
+    if (!isSubmitting && !isSubmitted && allRequiredAnswered) {
+      handleSubmit()
+    }
+  }, [answers, isSubmitting, isSubmitted, allRequiredAnswered])
 
   // ------------------ Render ------------------
 
@@ -85,7 +96,10 @@ export function FinishComponent() {
   if (isSubmitted) {
     return (
       <div className="demo-card">
-        <section>
+        <div className="success-card">
+          <div className="success-icon">
+            ✓
+          </div>
           <h2 className="section-title">Thank you!</h2>
           <div className="success-message">
             <p>
@@ -93,18 +107,7 @@ export function FinishComponent() {
               developer experience insights!
             </p>
           </div>
-          <div className="sticky-btns">
-            <div className="btn-group">
-              <button
-                type="button"
-                className="btn"
-                onClick={handleStartOver}
-              >
-                Take Survey Again
-              </button>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
     )
   }

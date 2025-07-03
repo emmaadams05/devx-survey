@@ -16,10 +16,9 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1540px;
   min-width: 320px;
   margin: auto;
-  padding: 1rem;
 }
 
 /* Accessibility */
@@ -122,6 +121,7 @@ legend {
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 /* Typography */
@@ -143,7 +143,7 @@ legend {
 
 /* Form Elements */
 .question-row {
-  margin-bottom: 1.5rem;
+  padding: 2rem;
 }
 
 /* Demographics Page Spacing */
@@ -355,14 +355,6 @@ textarea::placeholder {
   max-width: 100%;
   margin: 0 auto;
   overflow-x: auto;
-}
-
-.grid-title {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  line-height: 1.4;
 }
 
 .grid-columns {
@@ -771,7 +763,7 @@ textarea::placeholder {
 
 .demo-card {
   min-width: 640px;
-  margin: 0 auto;
+  margin: 1rem;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 1px 8px rgba(0,0,0,0.05);
@@ -829,4 +821,76 @@ section {
   position: absolute;
   left: 0;
   color: #64748b;
+}
+
+/* Success message styling */
+.success-card {
+  text-align: center;
+  padding: 3rem 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.success-message {
+  margin-bottom: 2rem;
+}
+
+.success-message p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 1rem;
+}
+
+.success-message p:last-child {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 0;
+}
+
+/* Page descriptions */
+.page-description {
+  font-size: 0.95rem;
+  color: #6b7280;
+  text-align: center;
+  margin: 0.5rem 0 1.5rem;
+  line-height: 1.5;
+}
+
+/* Mobile responsive - fullscreen below 960px */
+@media (max-width: 960px) {
+  .demo-card {
+    min-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .demo-card > .progress {
+    border-radius: 0;
+  }
+  
+  section {
+    padding: 1.5rem 1rem 1rem;
+  }
+  
+  .success-card {
+    padding: 2rem 1rem;
+  }
 } 

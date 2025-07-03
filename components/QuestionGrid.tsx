@@ -16,8 +16,6 @@ interface QuestionGridProps {
 export function QuestionGrid({ title, pairs, answers, onChange }: QuestionGridProps): JSX.Element {
   return (
     <div className="question-grid">
-      <h2 className="grid-title">{title}</h2>
-
       <div className="grid-columns">
         <div />
         <div className="column-header">
