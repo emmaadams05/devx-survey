@@ -93,7 +93,9 @@ export const questions: Question[] = [
       "iOS",
       "Python Backend",
       "Cypress Automation",
-      "Selenium Automation"
+      "Selenium Automation",
+      "AI Infrastructure",
+      "Native AWS Builds"
     ]
   },
 
