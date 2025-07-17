@@ -205,11 +205,11 @@ export function SurveyPageComponent({ page }: SurveyPageComponentProps): JSX.Ele
         </h2>
         <br/>
         {pageConfig.title_description && (
-          <p className="page-description"><strong>{pageConfig.title}</strong> {pageConfig.title_description}</p>
+          <p className="page-description"><strong>{pageConfig.title}</strong>{pageConfig.title_description}</p>
         )}
         <br/>
         {pageConfig.description && (
-          <p className="page-description">{pageConfig.description}.</p>
+          <p className="page-description">{pageConfig.description}</p>
         )}
         <br/>
         {renderPage()}
@@ -226,7 +226,7 @@ export function SurveyPageComponent({ page }: SurveyPageComponentProps): JSX.Ele
           Back
         </button>
         <button type="button" className="btn" onClick={handleNext}>
-          {isLastPage(page) ? 'Finish' : 'Next'}
+          {isLastPage(page) ? 'Submit' : 'Next'}
         </button>
       </div>
     </div>

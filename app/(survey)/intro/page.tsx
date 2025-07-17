@@ -16,7 +16,7 @@ export default function SurveyIntroPage() {
         Results from this survey will be shared with leadership to inform future decisions and will be used to help improve the existing developer experience at Synchrony.
        </p>
        <p>
-         Thanks for helping us improve our engineering environment. Your feedback highlights friction, guides improvements, and tracks progress over time.
+         Thanks for helping us improve our engineering environment. Your feedback highlights friction, guides improvements, and allows us to track progress over time.
        </p>
        <p>
          Responses are <strong>anonymous</strong> and aggregated.

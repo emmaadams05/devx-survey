@@ -41,8 +41,8 @@ export const surveyPages: SurveyPageConfig[] = [
     },
     {
         page: 'delivery-flow',
-        title: "Delivery & Flow",
-        description: "Rate how important these factors are to your developer experience at Synchrony and how satisfied you are with them",
+        title: "Delivery & Flow ",
+        description: "Rate how important these factors are to your developer experience at Synchrony and how satisfied you are with them.",
         title_description: "refers to the speed and ease with which developers deliver code. This includes daily workflows, deployment frequency, CI/CD efficiency, and the quality of peer reviews.",
         type: PageType.QuestionGrid,
         themes: [
@@ -55,8 +55,8 @@ export const surveyPages: SurveyPageConfig[] = [
     },
     {
         page: 'quality-safety',
-        title: "Quality & Safety",
-        description: "Rate how important these factors are to your developer experience at Synchrony and how satisfied you are with them",
+        title: "Quality & Safety ",
+        description: "Rate how important these factors are to your developer experience at Synchrony and how satisfied you are with them.",
         title_description: "refers to systems and tools that reduce change failure rates. This includes incident response readiness, reliable tooling, and a clear codebase.",
         type: PageType.QuestionGrid,
         themes: [
@@ -68,9 +68,9 @@ export const surveyPages: SurveyPageConfig[] = [
     },
     {
         page: 'team-dynamics',
-        title: "Team Dynamics & Well-Being",
-        description: "Rate how important these factors are to your developer experience at Synchrony and how satisfied you are with them",
-        title_description: "refers to team-level conditions that influence developer experience and delivery. This includes operational load, new-hire ramp up time, and more",
+        title: "Team Dynamics & Well-Being ",
+        description: "Rate how important these factors are to your developer experience at Synchrony and how satisfied you are with them.",
+        title_description: "refers to team-level conditions that influence developer experience and delivery. This includes operational load, new-hire ramp up time, and more.",
         type: PageType.QuestionGrid,
         themes: [
           THEMES.SECURITY_COMPLIANCE,
@@ -84,7 +84,7 @@ export const surveyPages: SurveyPageConfig[] = [
         page: 'additional-feedback',
         title: "Additional Feedback",
         description: "Please answer all questions before continuing.",
-        title_description: "Share any additional thoughts about your developer experience.",
+        title_description: ": Share any additional thoughts about your developer experience.",
         type: PageType.Text,
         questionIds: ['biggestFriction', 'bestChange']
     }
