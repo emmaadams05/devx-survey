@@ -203,6 +203,7 @@ export function SurveyPageComponent({ page }: SurveyPageComponentProps): JSX.Ele
         <h2 className="section-title">
           Step {currentPageIndex + 1} of {surveyPages.length}: {pageConfig.title}
         </h2>
+        <br/>
         {pageConfig.title_description && (
           <p className="page-description"><strong>{pageConfig.title}</strong> {pageConfig.title_description}</p>
         )}
@@ -210,7 +211,7 @@ export function SurveyPageComponent({ page }: SurveyPageComponentProps): JSX.Ele
         {pageConfig.description && (
           <p className="page-description">{pageConfig.description}.</p>
         )}
-
+        <br/>
         {renderPage()}
       </section>
 

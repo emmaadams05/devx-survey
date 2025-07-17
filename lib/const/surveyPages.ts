@@ -83,7 +83,8 @@ export const surveyPages: SurveyPageConfig[] = [
     {
         page: 'additional-feedback',
         title: "Additional Feedback",
-        description: "Share any additional thoughts about your developer experience",
+        description: "Please answer all questions before continuing.",
+        title_description: "Share any additional thoughts about your developer experience.",
         type: PageType.Text,
         questionIds: ['biggestFriction', 'bestChange']
     }
