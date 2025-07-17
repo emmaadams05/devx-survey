@@ -61,6 +61,10 @@ export const surveyResponseSchema = z.object({
   sustainablePaceImpact: likertScale.optional(),
   sustainablePaceSatisfaction: likertScale.optional(),
 
+  // Sustainable Pace
+  teamCommunicationImpact: likertScale.optional(),
+  teamCommunicationSatisfaction: likertScale.optional(),
+
   // Text feedback
   biggestFriction: z.string().max(500, "Maximum 500 characters").optional(),
   bestChange: z.string().max(500, "Maximum 500 characters").optional(),
@@ -109,6 +113,8 @@ export const surveyCompleteSchema = z.object({
   meetingsHandoffsSatisfaction: true,
   sustainablePaceImpact: true,
   sustainablePaceSatisfaction: true,
+  teamCommunicationImpact: true,
+  teamCommunicationSatisfaction: true,
   biggestFriction: true,
   bestChange: true,
   })

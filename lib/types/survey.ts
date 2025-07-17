@@ -30,6 +30,8 @@ export type SurveyAnswers = {
   meetingsHandoffsSatisfaction: LikertScale;
   sustainablePaceImpact: LikertScale;
   sustainablePaceSatisfaction: LikertScale;
+  teamCommunicationImpact: LikertScale;
+  teamCommunicationSatisfaction: LikertScale;
   biggestFriction: string;
   bestChange: string;
 };
@@ -51,6 +53,7 @@ export type LikertAnswers = Pick<SurveyAnswers,
   | 'onboardingImpact' | 'onboardingSatisfaction'
   | 'meetingsHandoffsImpact' | 'meetingsHandoffsSatisfaction'
   | 'sustainablePaceImpact' | 'sustainablePaceSatisfaction'
+  | 'teamCommunicationImpact' | 'teamCommunicationSatisfaction'
 >;
 
 export type TextAnswers = Pick<SurveyAnswers, 'biggestFriction' | 'bestChange'>;

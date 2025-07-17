@@ -9,12 +9,6 @@ set -e
 
 echo "--- MySQL Database Initializer ---"
 
-DATABASE_URL="mysql://root:@localhostlocalhost:3306/devx_survey"
-
-DB_NAME="devx_survey"
-DB_USER="survey_user"
-DB_PASS="devxsurvey"
-
 # Check if mysql is available
 if ! [ -x "$(command -v mysql)" ]; then
   echo 'Error: mysql is not installed. Please install MySQL.' >&2

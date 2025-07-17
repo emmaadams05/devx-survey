@@ -75,6 +75,10 @@ model SurveyResponse {
   sustainablePaceImpact       Int?
   sustainablePaceSatisfaction Int?
 
+  // Team Communication
+  teamCommunicationImpact       Int?
+  teamCommunicationSatisfaction Int?
+
   // Text feedback
   biggestFriction String?
   bestChange      String?
