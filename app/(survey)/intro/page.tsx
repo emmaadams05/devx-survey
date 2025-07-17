@@ -9,8 +9,14 @@ export default function SurveyIntroPage() {
          <span role="img" aria-hidden="true">🛠️</span> Developer Experience Survey
        </h1>
        <div className="progress-preview">≈ 5 min · 5 steps</div>
+       <p>This survey contains questions regarding your developer experience at Synchrony.
+        Please read each quesion <strong>carefully</strong> and respond honestly.
+       </p>
        <p>
-         Thanks for helping us improve our engineering environment. Your feedback:
+        Results from this survey will be shared with leadership to inform future decisions and will be used to help improve the existing developer experience at Synchrony.
+       </p>
+       <p>
+         Thanks for helping us improve our engineering environment. Your feedback highlights:
        </p>
        <ul className="hero-list">
          <li>Highlights friction</li>
