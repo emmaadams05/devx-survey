@@ -2,29 +2,28 @@
 
 ## PostgreSQL Setup
 
-### 1. Install PostgreSQL
+### 1. Install MySQL
 
 **macOS (Homebrew):**
 ```bash
-brew install postgresql
-brew services start postgresql
+brew install mysql
+brew services start mysql
 ```
 
 **Ubuntu/Debian:**
 ```bash
 sudo apt update
-sudo apt install postgresql postgresql-contrib
-sudo systemctl start postgresql
+sudo apt install mysql-server -y
 ```
 
 **Windows:**
-Download from https://www.postgresql.org/download/windows/
+Download from https://dev.mysql.com/downloads/installer/
 
 ### 2. Create Database
 
 ```bash
 # Connect to PostgreSQL
-psql postgres
+mysql start
 
 # Create database and user
 CREATE DATABASE devx_survey;
@@ -41,7 +40,7 @@ Create a `.env` file in the project root:
 
 ```env
 # Database
-DATABASE_URL="postgresql://survey_user:your_password_here@localhost:5432/devx_survey?schema=public"
+DATABASE_URL="mysql://root:your-password-here$@localhost:3306/devx_survey"
 
 # Next.js
 NEXTAUTH_URL="http://localhost:3000"

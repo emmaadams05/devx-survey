@@ -5,6 +5,12 @@
 # You should change the password in this script and in your .env file for a real project.
 #
 
+DB_NAME="devx_survey"
+DB_USER="survey_user"
+DB_PASS="devxsurvey"
+MYSQL_ROOT_USER="root"
+MYSQL_ROOT_PASS=""
+
 set -e
 
 echo "--- MySQL Database Initializer ---"

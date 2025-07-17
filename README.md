@@ -55,7 +55,7 @@ A modern survey application built with Next.js 15, PostgreSQL, and Prisma for co
 ### Prerequisites
 
 - Node.js 18.17 or later
-- PostgreSQL 12 or later
+- MySQL 8.0.41 or later
 - npm or yarn
 
 ### Installation
@@ -86,7 +86,11 @@ A modern survey application built with Next.js 15, PostgreSQL, and Prisma for co
    ```
 
 4. **Run database migrations**
+
+   Change scripts/init-db.sh to include your specific MySQL password if you have one. 
+
    ```bash
+   npm run db: init
    npm run db:push
    npm run db:seed  # Optional: Add sample data
    ```

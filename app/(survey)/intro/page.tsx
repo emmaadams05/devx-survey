@@ -6,11 +6,11 @@ export default function SurveyIntroPage() {
   return (
     <div className="card intro-card">
        <h1 style={{ textAlign: 'center', marginTop: 0 }}>
-         <span role="img" aria-hidden="true">🛠️</span> Developer Experience Survey
+        Synchrony Developer Experience Survey
        </h1>
        <div className="progress-preview">≈ 5 min · 5 steps</div>
        <p>This survey contains questions regarding your developer experience at Synchrony.
-        Please read each quesion <strong>carefully</strong> and respond honestly.
+        Please read each question <strong>carefully</strong> and respond honestly.
        </p>
        <p>
         Results from this survey will be shared with leadership to inform future decisions and will be used to help improve the existing developer experience at Synchrony.
