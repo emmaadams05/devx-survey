@@ -30,6 +30,7 @@ export const THEMES = {
   DEPLOY_AUTONOMY: "Deploy Autonomy",
   SECURITY_COMPLIANCE: "Security & Compliance",
   ONBOARDING: "Onboarding",
+  TEAM_COMMUNICATION: "Team Communication",
   MEETINGS_HANDOFFS: "Meetings & Hand‑offs",
   SUSTAINABLE_PACE: "Sustainable Pace",
   MORE_DETAIL: "More Detail"
@@ -48,6 +49,7 @@ export const GRID_TITLES = {
   [THEMES.DEPLOY_AUTONOMY]: "We can deploy without waiting on other teams.",
   [THEMES.SECURITY_COMPLIANCE]: "Security/compliance steps feel streamlined.",
   [THEMES.ONBOARDING]: "New engineers become productive quickly.",
+  [THEMES.TEAM_COMMUNICATION]: "Communication within your team is effective.",
   [THEMES.MEETINGS_HANDOFFS]: "Meetings & hand-offs feel worth the time.",
   [THEMES.SUSTAINABLE_PACE]: "Our delivery pace is sustainable."
 } as const;
@@ -267,6 +269,18 @@ export const questions: Question[] = [
     id: "sustainablePaceSatisfaction",
     scale: "satisfaction",
     theme: THEMES.SUSTAINABLE_PACE,
+    component: QuestionComponentType.Likert
+  },
+  {
+    id: "teamCommunicationImpact",
+    scale: "impact",
+    theme: THEMES.TEAM_COMMUNICATION,
+    component: QuestionComponentType.Likert
+  },
+  {
+    id: "teamCommunicationSatisfaction",
+    scale: "satisfaction",
+    theme: THEMES.TEAM_COMMUNICATION,
     component: QuestionComponentType.Likert
   },
 

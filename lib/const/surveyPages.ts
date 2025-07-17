@@ -10,6 +10,7 @@ interface PageConfig {
   page: string;
   title: string;
   description?: string;
+  title_description?: string;
   type: PageType;
 }
 
@@ -42,37 +43,41 @@ export const surveyPages: SurveyPageConfig[] = [
         page: 'delivery-flow',
         title: "Delivery & Flow",
         description: "Rate how important these factors are and how satisfied you are with them",
+        title_description: "refers to the speed and ease with which developers deliver code. This includes daily workflows, deployment frequency, CI/CD efficiency, and the quality of peer reviews.",
         type: PageType.QuestionGrid,
         themes: [
-          THEMES.DAY_TO_DAY,
           THEMES.DELIVERY_SPEED,
           THEMES.BUILD_TEST,
-          THEMES.CODE_REVIEW
+          THEMES.DEPLOY_AUTONOMY,
+          THEMES.CODE_REVIEW,
+          THEMES.SUSTAINABLE_PACE
         ]
     },
     {
         page: 'quality-safety',
         title: "Quality & Safety",
         description: "Rate how important these factors are and how satisfied you are with them",
+        title_description: "refers to systems and tools that reduce change failure rates and. This includes incident response readiness, reliable tooling, and a clear codebase.",
         type: PageType.QuestionGrid,
         themes: [
           THEMES.INCIDENT_RESPONSE,
           THEMES.CODEBASE_CLARITY,
-          THEMES.DEV_TOOLS,
-          THEMES.TEST_ENVIRONMENTS
+          THEMES.TEST_ENVIRONMENTS,
+          THEMES.DEV_TOOLS
         ]
     },
     {
         page: 'team-dynamics',
-        title: "Team Dynamics & Well-being",
+        title: "Team Dynamics & Well-Being",
         description: "Rate how important these factors are and how satisfied you are with them",
+        title_description: "refers to the refers to team-level conditions that influence developer experience and delivery. This includes operational load, new-hire ramp up time, and more",
         type: PageType.QuestionGrid,
         themes: [
-          THEMES.DEPLOY_AUTONOMY,
           THEMES.SECURITY_COMPLIANCE,
           THEMES.ONBOARDING,
           THEMES.MEETINGS_HANDOFFS,
-          THEMES.SUSTAINABLE_PACE
+          THEMES.TEAM_COMMUNICATION,
+          THEMES.DAY_TO_DAY,
         ]
     },
     {
