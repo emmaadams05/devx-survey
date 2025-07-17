@@ -49,7 +49,7 @@ export const GRID_TITLES = {
   [THEMES.DEPLOY_AUTONOMY]: "We can deploy without waiting on other teams.",
   [THEMES.SECURITY_COMPLIANCE]: "Security/compliance steps feel streamlined.",
   [THEMES.ONBOARDING]: "New engineers become productive quickly.",
-  [THEMES.TEAM_COMMUNICATION]: "Communication within your team is effective.",
+  [THEMES.TEAM_COMMUNICATION]: "Communication within your dev team is effective.",
   [THEMES.MEETINGS_HANDOFFS]: "Meetings & hand-offs feel worth the time.",
   [THEMES.SUSTAINABLE_PACE]: "Our delivery pace is sustainable."
 } as const;
